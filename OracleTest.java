@@ -1,58 +1,43 @@
-import java.util.*;
+package GFGprac;
 
 public class OracleTest {
-
+/*
+ * input:abc
+ * abc,bca,ab,
+ */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-	//int [] prices =	{4, 10, 14, 2, 8, 21, 16 };
-	int [] prices =	{ 32, 29, 25, 15, 12, 5, 7};
-	  String s = "abctd";
-      String q = "cat";
-   
-      if (isPresent(s, q))
-          System.out.println("Yes");
-      else
-          System.out.println("No");
+		int age = 14;
+	      assert age <= 18 : "Cannot Vote";
+	      System.out.println("The voter's age is " + age);
 		
+		combinationPermutationOfString("abc"," ");
 		
+
 	}
-	static int maxProfit(int [] prices){
-		int maxCurr=0;
-		int maxSoFar = 0;
+	
+	
+	static void combinationPermutationOfString(String str,String res){
 		
+		int n= str.length() ;
+		if(str.length() == 0) 
+			{
+			System.out.print(res+" ");
+			return;
+			}
 		
-		for(int i=1;i<prices.length;i++){
+		for(int i=0; i<n;i++){
+			char temp = str.charAt(i);
+		String tempStr = str.substring(0,i) + str.substring(i+1);
+		String left = str.substring(0,i) ;
+		String right = str.substring(i+1);
+		String full = left + right;
 			
-			maxCurr = Math.max(0, maxCurr += prices[i] - prices[i-1]);
-			maxSoFar = Math.max(maxCurr, maxSoFar);
+			
+			combinationPermutationOfString(full, res+temp);
 			
 		}
 		
-		return maxSoFar;
 	}
-	
 
-
-static boolean isPresent(String s, String q)
-{
-     
-    // Count occurrences of all
-    // characters in s.
-    int []freq = new int[256];
-    for (int i = 0; i < s.length(); i++)
-        freq[s.charAt(i)]++;
- 
-    // Check if number of occurrences of
-    // every character in q is less than
-    // or equal to that in s.
-    for (int i = 0; i < q.length(); i++)
-    {
-        freq[q.charAt(i)]--;
-         
-        if (freq[q.charAt(i)] < 0)
-            return false;
-    }
- 
-    return true;
-}
 }
